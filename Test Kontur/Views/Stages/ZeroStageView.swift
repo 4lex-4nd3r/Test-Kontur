@@ -95,7 +95,6 @@ class ZeroStageView : UIView {
       launchStackView = UIStackView(arrangedSubviews: [launchLabel, launchDateLabel], axis: .horizontal, spacing: 10)
       countryStackView = UIStackView(arrangedSubviews: [countryLabel, countryNameLabel], axis: .horizontal, spacing: 10)
       costStackView = UIStackView(arrangedSubviews: [costLabel, costPriceLabel], axis: .horizontal, spacing: 10)
-      
       allStackView = UIStackView(arrangedSubviews: [launchStackView, countryStackView, costStackView], axis: .vertical, spacing: 16)
       addSubview(allStackView)
       allStackView.frame = frame
