@@ -21,6 +21,7 @@ class PropertiesCollectionViewCell: UICollectionViewCell {
       label.font = .systemFont(ofSize: 16, weight: .heavy)
       label.textColor = .white
       label.textAlignment = .center
+      label.adjustsFontSizeToFitWidth = true
       label.translatesAutoresizingMaskIntoConstraints = false
       return label
    }()
@@ -31,6 +32,7 @@ class PropertiesCollectionViewCell: UICollectionViewCell {
       label.font = .systemFont(ofSize: 14, weight: .medium)
       label.textColor = #colorLiteral(red: 0.6235294118, green: 0.6235294118, blue: 0.6274509804, alpha: 1)
       label.textAlignment = .center
+      label.adjustsFontSizeToFitWidth = true
       label.translatesAutoresizingMaskIntoConstraints = false
       return label
    }()

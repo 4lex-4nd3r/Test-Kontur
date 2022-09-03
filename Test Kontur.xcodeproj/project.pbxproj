@@ -22,6 +22,7 @@
 		1F2DB54B28BD462C00AB781A /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DB54A28BD462C00AB781A /* Launch.swift */; };
 		1F2DB54D28BDD81D00AB781A /* ShipsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DB54C28BDD81D00AB781A /* ShipsManager.swift */; };
 		1F2DB54F28BDE3E000AB781A /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DB54E28BDE3E000AB781A /* Ship.swift */; };
+		1F2DB5A628C3AD1900AB781A /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DB5A528C3AD1900AB781A /* Metric.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		1F2DB54A28BD462C00AB781A /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		1F2DB54C28BDD81D00AB781A /* ShipsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipsManager.swift; sourceTree = "<group>"; };
 		1F2DB54E28BDE3E000AB781A /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
+		1F2DB5A528C3AD1900AB781A /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				1F2DB54A28BD462C00AB781A /* Launch.swift */,
 				1F2DB54E28BDE3E000AB781A /* Ship.swift */,
+				1F2DB5A528C3AD1900AB781A /* Metric.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				1F2DB54928BD37BE00AB781A /* LaunchesTableViewCell.swift in Sources */,
 				1F2DB54B28BD462C00AB781A /* Launch.swift in Sources */,
 				1F2DB54528BCF1EA00AB781A /* SettingsViewController.swift in Sources */,
+				1F2DB5A628C3AD1900AB781A /* Metric.swift in Sources */,
 				1F2DB54D28BDD81D00AB781A /* ShipsManager.swift in Sources */,
 				1F2DB4ED28BBA5B300AB781A /* MainViewController.swift in Sources */,
 				1F2DB50428BBB86000AB781A /* PropertiesCollectionViewCell.swift in Sources */,

@@ -101,10 +101,13 @@ class ZeroStageView : UIView {
       allStackView.frame = frame
    }
    
-   func setData(firstFlight: String, country: String, costPerLaunch: Int) {
-      launchDateLabel.text = firstFlight
+   func setData(firstFlight: Date, country: String, costPerLaunch: Int) {
+      let df = DateFormatter()
+      df.dateFormat = "d MMMM, yyyy"
+      let date = df.string(from: firstFlight)
+      launchDateLabel.text = date
       countryNameLabel.text = country
-      costPriceLabel.text = "\(costPerLaunch)"
+      costPriceLabel.text = "$\(Double(costPerLaunch) / 1000000) млн"
    }
    
    private func setConstraints() {

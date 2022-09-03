@@ -21,7 +21,11 @@ class ShipsManager {
             }
             guard let data = data else { return }
             do {
-               let ships = try JSONDecoder().decode([Ship].self, from: data)
+               let decoder = JSONDecoder()
+               let dateFormatter = DateFormatter()
+               dateFormatter.dateFormat = "yyyy-MM-dd"
+               decoder.dateDecodingStrategy = .formatted(dateFormatter)
+               let ships = try decoder.decode([Ship].self, from: data)
                completion(.success(ships))
                
             } catch let jsonError {
@@ -41,7 +45,11 @@ class ShipsManager {
             }
             guard let data = data else { return }
             do {
-               let launches = try JSONDecoder().decode([Launch].self, from: data)
+               let decoder = JSONDecoder()
+               let dateFormatter = DateFormatter()
+               dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.000Z"
+               decoder.dateDecodingStrategy = .formatted(dateFormatter)
+               let launches = try decoder.decode([Launch].self, from: data)
                completion(.success(launches))
                
             } catch let jsonError {

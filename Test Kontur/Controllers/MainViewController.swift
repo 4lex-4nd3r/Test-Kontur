@@ -15,10 +15,16 @@ class MainViewController : UIViewController {
    
    private var ships = [Ship]()
    
-   var isHeightMetric = true
-   var isDiameterMetric = true
-   var isMassKG = true
-   var isPayloadKG = true
+   var page = 0
+   
+   var metric = Metric(isHeightMetric: true,
+                       isDiameterMetric: true,
+                       isMassKG: true,
+                       isPayloadKG: true) {
+      didSet {
+         setProperties(ship: ships[page])
+      }
+   }
    
    private lazy var scrollView: UIScrollView = {
       let scrollView = UIScrollView()
@@ -142,7 +148,7 @@ class MainViewController : UIViewController {
          case .success(let ships):
             self.ships = ships
             self.pageControl.numberOfPages = ships.count
-            self.setupShipData(ship: ships[self.pageControl.currentPage])
+            self.setupShipData(ship: ships[self.page])
          case .failure(let error):
             print(error)
          }
@@ -176,14 +182,11 @@ class MainViewController : UIViewController {
             collectionView.dataSource = self
       view.addSubview(pageControl)
    }
-   
+
    private func setupShipData(ship: Ship) {
       
       nameLabel.text = ship.name
-      setProperties(heigth: ship.height.meters,
-                    diameter: ship.diameter.meters,
-                    mass: ship.mass.kg,
-                    payloadWeights: ship.payloadWeights[0].kg)
+      setProperties(ship: ship)
       setupZeroStage(firstFlight: ship.firstFlight,
                      country: ship.country,
                      costPerLaunch: ship.costPerLaunch)
@@ -195,17 +198,21 @@ class MainViewController : UIViewController {
                        burnTimeSEC: ship.secondStage.burnTimeSEC)
    }
    
-   private func setProperties(heigth: Double?, diameter: Double?, mass: Int, payloadWeights: Int ) {
+   private func setProperties(ship: Ship) {
       properties = [
-         ("Высота", "\(heigth!)"),
-         ("Диаметр", "\(diameter!)"),
-         ("Масса", "\(mass)"),
-         ("Нагрузка", "\(payloadWeights)")
+         ("Высота, \(metric.isHeightMetric ? "m" : "ft")" ,
+          "\(metric.isHeightMetric ? ship.height.meters! : ship.height.feet!)"),
+         ("Диаметр, \(metric.isDiameterMetric ? "m" : "ft")" ,
+          "\(metric.isDiameterMetric ? ship.diameter.meters! : ship.diameter.feet!)"),
+         ("Масса, \(metric.isMassKG ? "kg" : "lb")" ,
+          "\(metric.isMassKG ? ship.mass.kg : ship.mass.lb)"),
+         ("Нагрузка, \(metric.isPayloadKG ? "kg" : "lb")" ,
+          "\(metric.isPayloadKG ? ship.payloadWeights[0].kg : ship.payloadWeights[0].lb)")
       ]
       collectionView.reloadData()
    }
    
-   private func setupZeroStage(firstFlight: String, country: String, costPerLaunch: Int) {
+   private func setupZeroStage(firstFlight: Date, country: String, costPerLaunch: Int) {
       zeroStageView.setData(firstFlight: firstFlight,
                             country: country,
                             costPerLaunch: costPerLaunch)
@@ -228,6 +235,8 @@ class MainViewController : UIViewController {
    @objc private func settingsButtonTapped() {
       let settingsVC = SettingsViewController()
       settingsVC.modalPresentationStyle = .automatic
+      settingsVC.metric = metric
+      settingsVC.delegate = self
       present(settingsVC, animated: true)
    }
    
@@ -238,8 +247,8 @@ class MainViewController : UIViewController {
    }
    
    @objc private func pageControlValueChanged() {
-
-      setupShipData(ship: ships[pageControl.currentPage])
+      page = pageControl.currentPage
+      setupShipData(ship: ships[page])
    }
    
    //MARK: - Constraints
@@ -371,6 +380,14 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       return CGSize(width: 96, height: 96)
+   }
+}
+
+//MARK: - SettingChangedProtocol
+
+extension MainViewController: SettingChangedProtocol {
+   func metricUpdated(metric: Metric) {
+      self.metric = metric
    }
 }
 

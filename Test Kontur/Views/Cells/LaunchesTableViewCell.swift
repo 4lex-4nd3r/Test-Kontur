@@ -72,7 +72,11 @@ class LaunchesTableViewCell : UITableViewCell {
 
    func configure(launch: Launch) {
       nameLabel.text = launch.name
-      dateLabel.text = launch.dateUTC
+      
+      let df = DateFormatter()
+      df.dateFormat = "d MMMM, yyyy"
+      let date = df.string(from: launch.dateUTC)
+      dateLabel.text = date
       guard let success = launch.success else { return }
       statusImageView.image = UIImage(named: success ? "success" : "failure" )
    }

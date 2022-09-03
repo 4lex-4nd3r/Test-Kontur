@@ -12,7 +12,7 @@ struct Launch: Codable {
    let rocket: Rocket
    let success: Bool?
    let name: String
-   let dateUTC: String
+   let dateUTC: Date
 
    enum CodingKeys: String, CodingKey {
       case rocket

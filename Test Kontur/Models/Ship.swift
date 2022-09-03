@@ -17,7 +17,7 @@ struct Ship: Codable {
    let mass: Mass
    let payloadWeights: [PayloadWeight]
    
-   let firstFlight: String
+   let firstFlight: Date
    let country: String
    let costPerLaunch: Int
    
