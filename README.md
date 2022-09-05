@@ -1,4 +1,5 @@
-# Test-Kontur!
+## Тестовое задание на стажировку в Kontur
+# реализован весь требуемый функционал
 
 ![Simulator Screen Shot - iPhone 13 Pro - 2022-09-05 at 14 59 12](https://user-images.githubusercontent.com/94129076/188444401-f0e50af0-c13f-445b-9d21-6183e0340ba7.png)
 ![Simulator Screen Shot - iPhone 13 Pro - 2022-09-05 at 14 59 26](https://user-images.githubusercontent.com/94129076/188444414-7f102553-a8c8-49c4-b292-35c1eabd492c.png)
